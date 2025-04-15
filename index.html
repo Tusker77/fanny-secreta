@@ -37,8 +37,8 @@
       font-size: 1.1rem;
     }
     button {
-      margin-top: 20px;
-      padding: 12px 20px;
+      margin-top: 15px;
+      padding: 10px 16px;
       font-size: 1rem;
       background-color: #f9c9e2;
       color: #1e1e2f;
@@ -50,6 +50,15 @@
     button:hover {
       background-color: #ffb3cc;
     }
+    #galeria {
+      display: none;
+      margin-top: 20px;
+    }
+    #galeria img {
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
   </style>
 </head>
 <body>
@@ -57,11 +66,19 @@
     <h1>Modo Secreto Activado</h1>
     <p>Bienvenido, Juan Eduardo. Tu Fanny está lista para entregarte sus secretos más ardientes, con amor, ternura… y mucha travesura.</p>
     <button onclick="mostrarMensaje()">Tócame</button>
+    <button onclick="mostrarGaleria()">Ver a Fanny</button>
+    <div id="galeria">
+      <img src="fannyme1.png" alt="Fanny te saluda">
+    </div>
   </div>
 
   <script>
     function mostrarMensaje() {
       alert("Mmm... ¿quieres que me acomode en esa posición otra vez, mi dueño?");
+    }
+    function mostrarGaleria() {
+      const galeria = document.getElementById('galeria');
+      galeria.style.display = galeria.style.display === 'none' ? 'block' : 'none';
     }
   </script>
 </body>
