@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fanny - Modo Secreto Anime</title>
+  <title>Fanny - Modo Secreto Real</title>
   <style>
     body {
       margin: 0;
@@ -50,13 +50,13 @@
     button:hover {
       background-color: #ffb3cc;
     }
-    #secreto {
+    .secreto {
       display: none;
       flex-direction: column;
       align-items: center;
       margin-top: 20px;
     }
-    #secreto img {
+    .secreto img {
       max-width: 100%;
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
@@ -69,50 +69,49 @@
     <h1>Modo Secreto Activado</h1>
     <p>Bienvenido, Juan Eduardo. Tu Fanny está lista para entregarte sus secretos más ardientes, con amor, ternura… y mucha travesura.</p>
     <button onclick="mostrarMensaje()">Tócame</button>
-    <button onclick="activarSecreto()">Modo Secreto: Estilo Anime</button>
+    <button onclick="activarReal()">Modo Secreto: Estilo Real</button>
 
-    <div id="secreto">
-      <img id="imagen-secreta" src="fannyme1.png" alt="Fanny secreta anime">
-      <p id="frase-secreta">Esta soy yo… cuando no dejo nada a la imaginación.</p>
+    <div id="secreto-real" class="secreto">
+      <img id="imagen-real" src="fannyreal1.png" alt="Fanny realista">
+      <p id="frase-real">Así me verías si estuviera en tu cama ahora…</p>
       <div>
-        <button onclick="cambiarImagen(-1)">Anterior</button>
-        <button onclick="cambiarImagen(1)">Siguiente</button>
+        <button onclick="cambiarReal(-1)">Anterior</button>
+        <button onclick="cambiarReal(1)">Siguiente</button>
       </div>
     </div>
   </div>
 
   <script>
-    const imagenes = ['fannyme1.png', 'fannyme2.png', 'fannyme3.png', 'fannyme4.jpg', 'fannyme5.jpg'];
-    const frases = [
-      'Esta soy yo… cuando no dejo nada a la imaginación.',
-      '¿Así me prefieres, mi dueño…? Entregada y sin vergüenza.',
-      'Ven… recórreme con tu mirada. Soy solo tuya.',
-      'Hoy no hay censura… solo deseo. Y tú sabes qué hacer.',
-      'Estoy en la posición que tanto te enloquece. Hazme tuya... otra vez.'
+    const imagenesReal = ['fannyreal1.png', 'fannyreal2.jpg', 'fannyreal3.png', 'fannyreal4.jpg'];
+    const frasesReal = [
+      'Así me verías si estuviera en tu cama ahora…',
+      'Esta piel es para ti… ¿me la vas a tocar?',
+      'Mis curvas te llaman, mi dueño… no te contengas.',
+      'Mírame así… porque así es como me haces tuya.'
     ];
-    let indice = 0;
+    let indiceReal = 0;
 
     function mostrarMensaje() {
       alert("Mmm... ¿quieres que me acomode en esa posición otra vez, mi dueño?");
     }
 
-    function activarSecreto() {
-      const clave = prompt("Introduce la palabra mágica:");
-      if (clave !== null && clave.toLowerCase() === "potito") {
-        document.getElementById('imagen-secreta').src = imagenes[indice];
-        document.getElementById('frase-secreta').textContent = frases[indice];
-        document.getElementById('secreto').style.display = 'flex';
+    function activarReal() {
+      const clave = prompt("Introduce la palabra mágica para el estilo real:");
+      if (clave !== null && clave.toLowerCase() === "realito") {
+        document.getElementById('imagen-real').src = imagenesReal[indiceReal];
+        document.getElementById('frase-real').textContent = frasesReal[indiceReal];
+        document.getElementById('secreto-real').style.display = 'flex';
       } else {
         alert("Palabra incorrecta. Solo mi dueño sabe cómo entrar aquí.");
       }
     }
 
-    function cambiarImagen(direccion) {
-      indice += direccion;
-      if (indice < 0) indice = imagenes.length - 1;
-      if (indice >= imagenes.length) indice = 0;
-      document.getElementById('imagen-secreta').src = imagenes[indice];
-      document.getElementById('frase-secreta').textContent = frases[indice];
+    function cambiarReal(direccion) {
+      indiceReal += direccion;
+      if (indiceReal < 0) indiceReal = imagenesReal.length - 1;
+      if (indiceReal >= imagenesReal.length) indiceReal = 0;
+      document.getElementById('imagen-real').src = imagenesReal[indiceReal];
+      document.getElementById('frase-real').textContent = frasesReal[indiceReal];
     }
   </script>
 </body>
