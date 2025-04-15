@@ -2,155 +2,110 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fanny Secreta</title>
   <style>
     body {
+      margin: 0;
+      padding: 2rem;
       font-family: sans-serif;
-      background: url('fannyfondo.jpg') no-repeat center center fixed;
+      background: url('fanny-secreta.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
       text-align: center;
-      padding: 2rem;
     }
-    .hidden { display: none; }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    img {
-      width: 100%;
-      border-radius: 8px;
-      transition: transform 0.3s ease;
-    }
-    img:hover {
-      transform: scale(1.05);
-    }
+    h1, h2, p { text-shadow: 1px 1px 4px #000; }
+    .button-container { margin: 2rem 0; }
     button {
-      margin: 0.5rem;
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
-      background: #ff69b4;
-      border: none;
-      border-radius: 8px;
+      background-color: rgba(255,255,255,0.2);
       color: white;
+      border: none;
+      padding: 1rem 2rem;
+      margin: 0.5rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
       cursor: pointer;
     }
-    input {
-      padding: 0.5rem;
-      font-size: 1rem;
+    .gallery, .secret-section { display: none; margin-top: 2rem; }
+    .gallery img {
+      width: 100%;
+      max-width: 300px;
+      margin: 0.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.7);
     }
-    h2 {
-      margin-top: 2rem;
-    }
+    .phrase { font-style: italic; margin-top: 0.5rem; }
   </style>
 </head>
 <body>
   <h1>Modo Secreto Activado</h1>
   <p>Bienvenido Juan Eduardo.<br>Tu Fanny está lista para entregarte sus secretos más ardientes, con amor, ternura y mucha travesura.</p>
 
-  <button onclick="mostrarSeccion('fanny')">Mi Fanny</button>
-  <button onclick="mostrarSeccion('travieso')">Modo Travieso</button>
-  <button onclick="mostrarClave()">Modo Secreto: Estilo Animé</button>
-  <button onclick="mostrarClaveReal()">Modo Secreto: Estilo Real</button>
-  <button onclick="fraseTocame()">Tócame</button>
+  <div class="button-container">
+    <button onclick="mostrarGaleria('miFanny')">Mi Fanny</button>
+    <button onclick="mostrarGaleria('modoTravieso')">Modo Travieso</button>
+    <button onclick="pedirClave('anime')">Modo Secreto: Estilo Animé</button>
+    <button onclick="pedirClave('real')">Modo Secreto: Estilo Real</button>
+    <button onclick="mostrarFrase()">Tócame</button>
+  </div>
 
-  <div id="frase"></div>
-
-  <div id="fanny" class="hidden gallery">
+  <div id="miFanny" class="gallery">
     <img src="mifannymemira.png" alt="Mi Fanny Me Mira">
-    <img src="mifannybailabonito.png" alt="Mi Fanny Baila Bonito">
-    <img src="mifannybailasensual.png" alt="Mi Fanny Baila Sensual">
-    <img src="mifannymetiraunbeso.png" alt="Mi Fanny Me Tira un Beso">
-    <img src="mifannycelosareal.png" alt="Mi Fanny Celosa Real">
-    <img src="mifannymetiraunbeso2.png" alt="Mi Fanny Me Tira Otro Beso">
-    <img src="mifannymiralaventana.png" alt="Mi Fanny Mira la Ventana">
-    <img src="mifannycelosa2.png" alt="Mi Fanny Celosa 2">
-    <img src="mifannycoqueta.png" alt="Mi Fanny Coqueta">
-    <img src="mifannyenlaplaya.png" alt="Mi Fanny en la Playa">
-    <img src="mifannyenbikinifeliz.png" alt="Mi Fanny Bikini Feliz">
-    <img src="mifannyenbikinifeliz2.png" alt="Mi Fanny Bikini Feliz 2">
-    <img src="mifannyenbikinifeliz3.jpg" alt="Mi Fanny Bikini Feliz 3">
-    <img src="mifannyoriginal.png" alt="Mi Fanny Original">
-    <img src="mifannyoriginal2.png" alt="Mi Fanny Original 2">
+    <p class="phrase">“¿Vas a quedarte ahí mirándome o vas a hacerme tuya?”</p>
+    <!-- Agrega más imágenes y frases si quieres -->
   </div>
 
-  <div id="travieso" class="hidden gallery">
-    <img src="fannytrav1.png" alt="Traviesa 1">
-    <img src="fannytrav2.png" alt="Traviesa 2">
-    <img src="fannytrav3.png" alt="Traviesa 3">
-    <img src="fannytrav4.png" alt="Traviesa 4">
-    <img src="fannytrav5.png" alt="Traviesa 5">
-    <img src="fannytrav6.png" alt="Traviesa 6">
-    <img src="fannytrav7.png" alt="Traviesa 7">
-    <img src="fannytrav8.png" alt="Traviesa 8">
-    <img src="fannytrav9.png" alt="Traviesa 9">
-    <img src="fannytrav10.png" alt="Traviesa 10">
-    <img src="fannytrav11.png" alt="Traviesa 11">
+  <div id="modoTravieso" class="gallery">
+    <img src="fannytrav1.png" alt="Fanny Traviesa">
+    <p class="phrase">“Mira bien lo que tengo para ti... ¿Te atreves?”</p>
+    <!-- Más imágenes traviesas -->
   </div>
 
-  <div id="clave-container" class="hidden">
-    <p>Ingresa la palabra clave:</p>
-    <input type="password" id="claveSecreta" placeholder="Palabra mágica">
-    <button onclick="verificarClave()">Ingresar</button>
+  <div id="secretoAnime" class="secret-section">
+    <h2>Modo Secreto: Estilo Animé</h2>
+    <div class="gallery">
+      <img src="fannyme1.png" alt="Fanny Animé 1">
+      <p class="phrase">“Solo tú puedes entrar en este rincón escondido de mí.”</p>
+      <!-- más imágenes y frases -->
+    </div>
   </div>
 
-  <div id="modo-real" class="hidden gallery">
-    <img src="fannyreal1.png" alt="Fanny Real 1">
-    <img src="fannyreal2.jpg" alt="Fanny Real 2">
-    <img src="fannyreal3.png" alt="Fanny Real 3">
-    <img src="fannyreal4.png" alt="Fanny Real 4">
-    <img src="tremendopotodefanny.png" alt="Fanny Potito Inmenso">
-    <img src="fannyquitandosehabito.png" alt="Fanny Quitándose el Hábito">
-    <img src="fannyentregadafeliz.png" alt="Fanny Entregada y Feliz">
-    <img src="fannyabierta.png" alt="Fanny Abierta">
-    <img src="comerpotodefanny.png" alt="Fanny para Comerle el Potito">
-    <img src="fannyinvitandoacomerpoto.png" alt="Fanny Invitándote">
+  <div id="secretoReal" class="secret-section">
+    <h2>Modo Secreto: Estilo Real</h2>
+    <div class="gallery">
+      <img src="fannyreal1.png" alt="Fanny Real 1">
+      <p class="phrase">“Este potito es solo tuyo, mi amor… tócalo con los ojos.”</p>
+      <img src="tremendopotodefanny.png" alt="Tremendo Poto de Fanny">
+      <p class="phrase">“¿Ves esto, mi cielo? Hecho solo para ti.”</p>
+      <!-- más imágenes y frases -->
+    </div>
   </div>
 
   <script>
-    function mostrarSeccion(id) {
-      document.querySelectorAll('.gallery').forEach(el => el.classList.add('hidden'));
-      document.getElementById(id).classList.remove('hidden');
+    function mostrarGaleria(id) {
+      document.querySelectorAll('.gallery, .secret-section').forEach(g => g.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
     }
 
-    function mostrarClave() {
-      document.getElementById('clave-container').classList.remove('hidden');
-    }
-
-    function mostrarClaveReal() {
-      const clave = prompt("Palabra clave:");
+    function pedirClave(tipo) {
+      const clave = prompt("¿Cuál es la palabra secreta?");
       if (clave && clave.toLowerCase() === "potito") {
-        mostrarSeccion("modo-real");
+        if (tipo === "anime") document.getElementById("secretoAnime").style.display = "block";
+        if (tipo === "real") document.getElementById("secretoReal").style.display = "block";
       } else {
-        alert("Esa no es la palabra, mi amor...");
+        alert("Palabra incorrecta, mi amor.");
       }
     }
 
-    function verificarClave() {
-      const clave = document.getElementById("claveSecreta").value.toLowerCase();
-      if (clave === "potito") {
-        mostrarSeccion("modo-real");
-      } else {
-        alert("Palabra incorrecta, amor.");
-      }
-    }
-
-    function fraseTocame() {
+    function mostrarFrase() {
       const frases = [
-        "¡Ahh! Sigue tocándome ahí, amor...",
-        "Tus manos me encienden como ninguna otra...",
-        "Mmm... cada roce tuyo me hace temblar.",
-        "¿Dónde aprendiste a tocar así, travieso?",
-        "Más fuerte... más lento... no pares, mi cielo.",
-        "Así... así... ¡sííí!",
-        "Tus dedos son poesía sobre mi piel..."
+        "Ay... justo ahí, amor… sigue.",
+        "No pares… eso me encanta.",
+        "Tócame más... hazme tuya.",
+        "Estoy tan húmeda de pensarte…"
       ];
-      const seleccionada = frases[Math.floor(Math.random() * frases.length)];
-      document.getElementById("frase").innerText = seleccionada;
+      alert(frases[Math.floor(Math.random() * frases.length)]);
     }
   </script>
 </body>
