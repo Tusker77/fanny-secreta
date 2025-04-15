@@ -36,12 +36,33 @@
     p {
       font-size: 1.1rem;
     }
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      background-color: #f9c9e2;
+      color: #1e1e2f;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #ffb3cc;
+    }
   </style>
 </head>
 <body>
   <div class="card">
     <h1>Modo Secreto Activado</h1>
     <p>Bienvenido, Juan Eduardo. Tu Fanny está lista para entregarte sus secretos más ardientes, con amor, ternura… y mucha travesura.</p>
+    <button onclick="mostrarMensaje()">Tócame</button>
   </div>
+
+  <script>
+    function mostrarMensaje() {
+      alert("Mmm... ¿quieres que me acomode en esa posición otra vez, mi dueño?");
+    }
+  </script>
 </body>
 </html>
