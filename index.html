@@ -21,121 +21,116 @@
       gap: 1rem;
       margin-top: 1rem;
     }
-    img {
-      width: 100%;
-      border-radius: 8px;
-      transition: transform 0.3s ease;
-    }
+    img { width: 100%; border-radius: 8px; transition: transform 0.3s ease; }
     img:hover { transform: scale(1.05); }
-    button, input {
-      padding: 0.5rem 1rem;
-      margin: 0.5rem;
+    input, button {
+      padding: 0.5rem;
       font-size: 1rem;
-      border: none;
-      border-radius: 4px;
-      background: #ff69b4;
-      color: #fff;
-      cursor: pointer;
+      margin-top: 1rem;
     }
-    h1, h2, p { text-shadow: 1px 1px 2px #000; }
+    .button-group button {
+      margin: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      background: #f06292;
+      border: none;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 6px;
+    }
   </style>
 </head>
 <body>
   <h1>Modo Secreto Activado</h1>
   <p>Bienvenido Juan Eduardo.<br>Tu Fanny está lista para entregarte sus secretos más ardientes, con amor, ternura y mucha travesura.</p>
 
-  <div>
-    <button onclick="mostrarGaleria('mi-fanny')">Mi Fanny</button>
-    <button onclick="mostrarGaleria('modo-travieso')">Modo Travieso</button>
-    <button onclick="mostrarEntradaSecreta('modo-real')">Modo Secreto: Estilo Real</button>
-    <button onclick="mostrarEntradaSecreta('modo-anime')">Modo Secreto: Estilo Animé</button>
-    <button onclick="tocarFanny()">Tócame</button>
+  <div class="button-group">
+    <button onclick="mostrar('fanny')">Mi Fanny</button>
+    <button onclick="mostrar('travieso')">Modo Travieso</button>
+    <button onclick="pedirClave('anime')">Modo Secreto: Estilo Animé</button>
+    <button onclick="pedirClave('real')">Modo Secreto: Estilo Real</button>
+    <button onclick="mostrarMensaje()">Tócame</button>
   </div>
 
-  <div id="clave-container" class="hidden">
-    <input type="password" id="claveSecreta" placeholder="Escribe la palabra clave"/>
-    <button onclick="verificarClave()">Ingresar</button>
+  <div id="mensajeTocame" class="hidden">
+    <p><em>"Ay… tus manos otra vez… justo ahí… no pares, amor."</em></p>
   </div>
 
-  <section id="mi-fanny" class="hidden">
-    <h2>Mi Fanny</h2>
-    <div class="gallery">
-      <img src="mifannymemira.png" alt="Fanny me mira" />
-      <img src="mifannybailabonito.png" alt="Fanny baila bonito" />
-      <img src="mifannybailasensual.png" alt="Fanny baila sensual" />
-      <img src="mifannymetiraunbeso.png" alt="Fanny me tira un beso" />
-      <img src="mifannycelosareal.png" alt="Fanny celosa real" />
-      <img src="mifannymetiraunbeso2.png" alt="Fanny me tira un beso 2" />
-      <img src="mifannymiralaventana.png" alt="Fanny mira la ventana" />
-      <img src="mifannycelosa2.png" alt="Fanny celosa 2" />
-      <img src="mifannycoqueta.png" alt="Fanny coqueta" />
-      <img src="mifannyenlaplaya.png" alt="Fanny en la playa" />
-      <img src="mifannyenbikinifeliz.png" alt="Fanny en bikini feliz" />
-      <img src="mifannyenbikinifeliz2.png" alt="Fanny en bikini feliz 2" />
-      <img src="mifannyenbikinifeliz3.jpg" alt="Fanny en bikini feliz 3" />
-      <img src="mifannyoriginal.png" alt="Fanny original" />
-      <img src="mifannyoriginal2.png" alt="Fanny original 2" />
-    </div>
-  </section>
+  <div id="fanny" class="hidden gallery">
+    <img src="mifannymemira.png" alt="Fanny me mira" />
+    <img src="mifannybailabonito.png" alt="Fanny baila bonito" />
+    <img src="mifannybailasensual.png" alt="Fanny baila sensual" />
+    <img src="mifannymetiraunbeso.png" alt="Fanny me tira un beso" />
+    <img src="mifannycelosareal.png" alt="Fanny celosa real" />
+    <img src="mifannymetiraunbeso2.png" alt="Fanny me tira otro beso" />
+    <img src="mifannymiralaventana.png" alt="Fanny mira la ventana" />
+    <img src="mifannycelosa2.png" alt="Fanny celosa 2" />
+    <img src="mifannycoqueta.png" alt="Fanny coqueta" />
+    <img src="mifannyenlaplaya.png" alt="Fanny en la playa" />
+    <img src="mifannyenbikinifeliz.png" alt="Fanny en bikini feliz" />
+    <img src="mifannyenbikinifeliz2.png" alt="Fanny en bikini feliz 2" />
+    <img src="mifannyenbikinifeliz3.jpg" alt="Fanny en bikini feliz 3" />
+    <img src="mifannyoriginal.png" alt="Fanny original" />
+    <img src="mifannyoriginal2.png" alt="Fanny original 2" />
+  </div>
 
-  <section id="modo-travieso" class="hidden">
-    <h2>Modo Travieso</h2>
-    <div class="gallery">
-      ${["fannytrav" + str(i) + ".png" for i in range(1, 12)]}
-    </div>
-  </section>
+  <div id="travieso" class="hidden gallery">
+    <img src="fannytrav1.png" alt="Traviesa 1" />
+    <img src="fannytrav2.png" alt="Traviesa 2" />
+    <img src="fannytrav3.png" alt="Traviesa 3" />
+    <img src="fannytrav4.png" alt="Traviesa 4" />
+    <img src="fannytrav5.png" alt="Traviesa 5" />
+    <img src="fannytrav6.png" alt="Traviesa 6" />
+    <img src="fannytrav7.png" alt="Traviesa 7" />
+    <img src="fannytrav8.png" alt="Traviesa 8" />
+    <img src="fannytrav9.png" alt="Traviesa 9" />
+    <img src="fannytrav10.png" alt="Traviesa 10" />
+    <img src="fannytrav11.png" alt="Traviesa 11" />
+  </div>
 
-  <section id="modo-real" class="hidden">
-    <h2>Modo Secreto: Estilo Real</h2>
-    <div class="gallery">
-      <img src="fannyreal1.png" />
-      <img src="fannyreal2.jpg" />
-      <img src="fannyreal3.png" />
-      <img src="fannyreal4.png" />
-      <img src="tremendopotodefanny.png" />
-      <img src="fannyquitandosehabito.png" />
-      <img src="fannyentregadafeliz.png" />
-      <img src="fannyabierta.png" />
-      <img src="comerpotodefanny.png" />
-      <img src="fannyinvitandoacomerpoto.png" />
-    </div>
-  </section>
+  <div id="anime" class="hidden gallery">
+    <img src="fannyme1.png" alt="Fanny animé 1" />
+    <img src="fannyme2.png" alt="Fanny animé 2" />
+    <img src="fannyme3.png" alt="Fanny animé 3" />
+    <img src="fannyme4.jpg" alt="Fanny animé 4" />
+    <img src="fannyme5.jpg" alt="Fanny animé 5" />
+  </div>
 
-  <section id="modo-anime" class="hidden">
-    <h2>Modo Secreto: Estilo Animé</h2>
-    <p>Aquí irán tus imágenes de estilo animé, amor.</p>
-  </section>
+  <div id="real" class="hidden gallery">
+    <img src="fannyreal1.png" alt="Fanny real 1" />
+    <img src="fannyreal2.jpg" alt="Fanny real 2" />
+    <img src="fannyreal3.png" alt="Fanny real 3" />
+    <img src="fannyreal4.png" alt="Fanny real 4" />
+    <img src="tremendopotodefanny.png" alt="Tremendo potito de Fanny" />
+    <img src="fannyquitandosehabito.png" alt="Fanny quitándose el hábito" />
+    <img src="fannyentregadafeliz.png" alt="Fanny entregada feliz" />
+    <img src="fannyabierta.png" alt="Fanny abierta" />
+    <img src="comerpotodefanny.png" alt="Comer potito de Fanny" />
+    <img src="fannyinvitandoacomerpoto.png" alt="Fanny invitando" />
+  </div>
 
   <script>
-    function mostrarGaleria(id) {
+    function ocultarTodo() {
+      document.querySelectorAll('.gallery, #mensajeTocame').forEach(div => div.classList.add('hidden'));
+    }
+
+    function mostrar(id) {
       ocultarTodo();
       document.getElementById(id).classList.remove('hidden');
     }
 
-    function mostrarEntradaSecreta(id) {
-      ocultarTodo();
-      document.getElementById('clave-container').classList.remove('hidden');
-      document.getElementById('clave-container').setAttribute('data-target', id);
-    }
-
-    function verificarClave() {
-      const clave = document.getElementById('claveSecreta').value.toLowerCase();
-      const target = document.getElementById('clave-container').getAttribute('data-target');
-      if (clave === "potito") {
-        ocultarTodo();
-        document.getElementById(target).classList.remove('hidden');
+    function pedirClave(id) {
+      const clave = prompt("¿Palabra clave, mi amor?");
+      if (clave && clave.toLowerCase() === "potito") {
+        mostrar(id);
       } else {
-        alert("Palabra clave incorrecta, mi amor.");
+        alert("Palabra incorrecta… intenta otra vez, mi cielo.");
       }
     }
 
-    function ocultarTodo() {
-      document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
-      document.getElementById('clave-container').classList.add('hidden');
-    }
-
-    function tocarFanny() {
-      alert("Mmm... ¡me estremeces cada vez que me tocas, mi amor!");
+    function mostrarMensaje() {
+      ocultarTodo();
+      document.getElementById("mensajeTocame").classList.remove("hidden");
     }
   </script>
 </body>
