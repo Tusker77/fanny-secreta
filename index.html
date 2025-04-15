@@ -102,7 +102,7 @@
         <button onclick="cambiarTraviesa(1)">Siguiente</button>
       </div>
     
-    <div id="mi-fanny" class="secreto">
+    <div id="mi-fanny" class="secreto" style="display: none;">
       <img id="imagen-mi-fanny" src="mifannymemira.png" alt="Mi Fanny">
       <p id="frase-mi-fanny">Así me ves tú… con amor, deseo y ternura.</p>
       <div>
@@ -181,10 +181,10 @@
     let indiceMiFanny = 0;
 
     function activarMiFanny() {
+      document.getElementById('mi-fanny').style.display = 'flex';
+      document.getElementById('secreto-travieso').style.display = 'none';
       document.getElementById('secreto-anime').style.display = 'none';
       document.getElementById('secreto-real').style.display = 'none';
-      document.getElementById('secreto-travieso').style.display = 'none';
-      document.getElementById('mi-fanny').style.display = 'flex';
       cambiarMiFanny(0);
     }
 
