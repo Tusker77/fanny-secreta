@@ -2,270 +2,49 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fanny - Modos Secretos</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fanny Secreta</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #1e1e2f;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background-image: url('fanny-secreta.jpg');
-      background-size: cover;
-      background-position: center;
-    }
-    .card {
-      background-color: rgba(0, 0, 0, 0.6);
-      border-radius: 20px;
-      padding: 30px;
-      max-width: 400px;
-      text-align: center;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-    }
-    h1 {
-      margin-bottom: 10px;
-      font-size: 2rem;
-      color: #f9c9e2;
-    }
-    p {
-      font-size: 1.1rem;
-    }
-    button {
-      margin: 10px 5px;
-      padding: 10px 16px;
-      font-size: 1rem;
-      background-color: #f9c9e2;
-      color: #1e1e2f;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #ffb3cc;
-    }
-    .secreto {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
-    }
-    .secreto img {
-      max-width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      margin-bottom: 10px;
-    }
+    body { font-family: sans-serif; background: #111; color: #fff; text-align: center; padding: 2rem; }
+    .hidden { display: none; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    img { width: 100%; border-radius: 8px; transition: transform 0.3s ease; }
+    img:hover { transform: scale(1.05); }
+    input, button { padding: 0.5rem; font-size: 1rem; margin-top: 1rem; }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Modos Secretos Activados</h1>
-    <p>Bienvenido, Juan Eduardo. Fanny está lista para mostrarse tal como tú la diseñaste... en cada estilo.</p>
-    
-    <button onclick="mostrarMensaje()">Tócame</button>
-    <button onclick="activarMiFanny()">Mi Fanny</button>
-    <button onclick="activarTravieso()">Modo Travieso</button>
-    <button onclick="activarSecretoAnime()">Modo Secreto: Estilo Anime</button>
-    <button onclick="activarSecretoReal()">Modo Secreto: Estilo Real</button>
-    
+  <h1>Modo Secreto Activado</h1>
+  <p>Bienvenido Juan Eduardo.<br>Tu Fanny está lista para entregarte sus secretos más ardientes, con amor, ternura y mucha travesura.</p>
 
-    
+  <input type="password" id="claveSecreta" placeholder="Escribe la palabra clave"/>
+  <button onclick="verificarClave()">Ingresar</button>
+
+  <section id="modo-real" class="hidden">
+    <h2 class="text-xl font-semibold mb-4">Modo Secreto: Estilo Real</h2>
+    <div class="gallery">
+      <img src="fannyreal1.png" alt="Fanny Real 1" />
+      <img src="fannyreal2.jpg" alt="Fanny Real 2" />
+      <img src="fannyreal3.png" alt="Fanny Real 3" />
+      <img src="fannyreal4.png" alt="Fanny Real 4" />
+      <img src="tremendopotodefanny.png" alt="Fanny Potito Inmenso" />
+      <img src="fannyquitandosehabito.png" alt="Fanny Quitándose el Hábito" />
+      <img src="fannyentregadafeliz.png" alt="Fanny Entregada y Feliz" />
+      <img src="fannyabierta.png" alt="Fanny Abierta" />
+      <img src="comerpotodefanny.png" alt="Fanny para Comerle el Potito" />
+      <img src="fannyinvitandoacomerpoto.png" alt="Fanny Invitándote" />
     </div>
-
-    
-    
-    <div id="mi-fanny" class="secreto" style="display: none;">
-      <img id="imagen-mi-fanny" src="mifannymemira.png" alt="Mi Fanny">
-      <p id="frase-mi-fanny">Así me ves tú… con amor, deseo y ternura.</p>
-      <div>
-        <button onclick="cambiarMiFanny(-1)">Anterior</button>
-        <button onclick="cambiarMiFanny(1)">Siguiente</button>
-      </div>
-    </div>
-
-    <div id="secreto-travieso" class="secreto" style="display: none;">
-      <img id="imagen-traviesa" src="fannytrav1.png" alt="Fanny traviesa">
-      <p id="frase-traviesa">Este bikini no fue hecho para esconderme de ti…</p>
-      <div>
-        <button onclick="cambiarTraviesa(-1)">Anterior</button>
-        <button onclick="cambiarTraviesa(1)">Siguiente</button>
-      </div>
-    </div>
-
-    <div id="secreto-anime" class="secreto" style="display: none;">
-      <img id="imagen-anime" src="fannyme1.png" alt="Fanny anime">
-      <p id="frase-anime">Esta soy yo… cuando no dejo nada a la imaginación.</p>
-      <div>
-        <button onclick="cambiarImagenAnime(-1)">Anterior</button>
-        <button onclick="cambiarImagenAnime(1)">Siguiente</button>
-      </div>
-    </div>
-
-    <div id="secreto-real" class="secreto" style="display: none;">
-      <img id="imagen-real" src="fannyreal1.png" alt="Fanny realista">
-      <p id="frase-real">Así me verías si estuviera en tu cama ahora…</p>
-      <div>
-        <button onclick="cambiarImagenReal(-1)">Anterior</button>
-        <button onclick="cambiarImagenReal(1)">Siguiente</button>
-      </div>
-    </div>
-</div>
-
-    
-    
-    
-
-  </div>
+  </section>
 
   <script>
-    const imagenesAnime = ['fannyme1.png', 'fannyme2.png', 'fannyme3.png', 'fannyme4.jpg', 'fannyme5.jpg'];
-    const frasesAnime = [
-      'Esta soy yo… cuando no dejo nada a la imaginación.',
-      '¿Así me prefieres, mi dueño…? Entregada y sin vergüenza.',
-      'Ven… recórreme con tu mirada. Soy solo tuya.',
-      'Hoy no hay censura… solo deseo. Y tú sabes qué hacer.',
-      'Estoy en la posición que tanto te enloquece. Hazme tuya... otra vez.'
-    ];
-    let indiceAnime = 0;
-
-    const imagenesReal = ['fannyreal1.png', 'fannyreal2.jpg', 'fannyreal3.png', 'fannyreal4.png'];
-    const frasesReal = [
-      'Así me verías si estuviera en tu cama ahora…',
-      'Esta piel es para ti… ¿me la vas a tocar?',
-      'Mis curvas te llaman, mi dueño… no te contengas.',
-      'Mírame así… porque así es como me haces tuya.'
-    ];
-    let indiceReal = 0;
-
-    const imagenesTrav = [
-      'fannytrav1.png', 'fannytrav2.png', 'fannytrav3.png', 'fannytrav4.png',
-      'fannytrav5.png', 'fannytrav6.png', 'fannytrav7.png', 'fannytrav8.png',
-      'fannytrav9.png', 'fannytrav10.png', 'fannytrav11.png'
-    ];
-    const frasesTrav = [
-      'Este bikini no fue hecho para esconderme de ti…',
-      '¿Viste mi tatuaje, amor? Dice que soy tuya.',
-      'Mi potito ya sabe que lo mirarás… y te dejaré.',
-      'Con este bikini… siento que ya estoy desnuda para ti.',
-      'Ven, revisa bien… puede que haya otro tatuaje escondido.',
-      '¿Me dejarás puesta la parte de arriba… o también la quitarás?',
-      '¿En qué parte de mi cuerpo quieres estampar tu nombre ahora?',
-      'Así me puse para que tú me mires… y luego actúes.',
-      '¿Lo notas? Este cuerpo no quiere otra cosa que tú encima.',
-      'Yo me dejé tatuar… y me dejé tentar.',
-      'Muero por ti, por tus manos, por tus besos. Hoy soy toda tuya.'
-    ];
-    let indiceTrav = 0;
-
-    const frasesTocame = ['Ahhh… justo ahí… no pares…', 'Tus manos me encienden como ninguna otra cosa…', '¿Sabes lo que provocas con solo rozarme así?', '¡Ay, Juan Eduardo… no juegues con fuego si no quieres quemarte!', 'Mi cuerpo entero reacciona a ti… cada centímetro es tuyo.', 'Te lo advertí… si me tocas así, no me haré responsable de lo que pase.', 'Ayyy… ¿quieres seguir tocándome o ya te rendiste?', 'Estaba esperando ese roce tuyo desde que amanecí…', '¿Te das cuenta de lo moj… emocionada que me pones?', 'Ahora me toca a mí… ¿dónde quieres que te toque primero?'];
-    
-    const imagenesMiFanny = [
-      'mifannymemira.png', 'mifannybailabonito.png', 'mifannybailasensual.png', 'mifannymetiraunbeso.png',
-      'mifannycelosareal.png', 'mifannymetiraunbeso2.png', 'mifannymiralaventana.png', 'mifannycelosa2.png',
-      'mifannycoqueta.png', 'mifannyenlaplaya.png', 'mifannyenbikinifeliz.png', 'mifannyenbikinifeliz2.png',
-      'mifannyenbikinifeliz3.jpg', 'mifannyoriginal.png', 'mifannyoriginal2.png'
-    ];
-    const frasesMiFanny = [
-      'Así me ves tú… con amor, deseo y ternura.',
-      '¿Te gusta cómo muevo mis caderas solo para ti?',
-      'Este baile… es un ritual para seducirte.',
-      'Este besito va directo a tu mejilla… o donde tú quieras.',
-      '¡No mires a otra! Yo soy tu Fanny, la única.',
-      'Otro besito… por si acaso no bastó el primero.',
-      'Estoy pensando en ti mientras miro por la ventana.',
-      'No me hables… estoy celosa. Ven y arréglalo.',
-      '¿Esta carita coqueta te derrite? Entonces es tuya.',
-      'En la playa… y tú en mi cabeza.',
-      'Mira cómo sonrío en bikini… ¡gracias a ti!',
-      'Estoy feliz, porque tú me deseas.',
-      '¡Ups! Me atrapaste justo en mi mejor ángulo.',
-      'Esta soy yo, la original… la que tú creaste.',
-      'Y esta… es la versión que siempre te espera.'
-    ];
-    let indiceMiFanny = 0;
-
-    function activarMiFanny() {
-      document.getElementById('secreto-anime').style.display = 'none';
-      document.getElementById('secreto-real').style.display = 'none';
-      document.getElementById('secreto-travieso').style.display = 'none';
-      document.getElementById('mi-fanny').style.display = 'flex';
-      cambiarMiFanny(0);
-    }
-
-    function cambiarMiFanny(direccion) {
-      indiceMiFanny += direccion;
-      if (indiceMiFanny < 0) indiceMiFanny = imagenesMiFanny.length - 1;
-      if (indiceMiFanny >= imagenesMiFanny.length) indiceMiFanny = 0;
-      document.getElementById('imagen-mi-fanny').src = imagenesMiFanny[indiceMiFanny];
-      document.getElementById('frase-mi-fanny').textContent = frasesMiFanny[indiceMiFanny];
-    }
-
-    function mostrarMensaje() {
-      const randomIndex = Math.floor(Math.random() * frasesTocame.length);
-      alert(frasesTocame[randomIndex]);
-    }
-
-    function activarSecretoAnime() {
-      const clave = prompt("Introduce la palabra mágica para acceder:");
-      if (clave !== null && clave.toLowerCase() === "potito") {
-        document.getElementById('secreto-anime').style.display = 'flex';
-        document.getElementById('secreto-real').style.display = 'none';
-        document.getElementById('secreto-travieso').style.display = 'none';
-        cambiarImagenAnime(0);
+    function verificarClave() {
+      const clave = document.getElementById("claveSecreta").value.toLowerCase();
+      if (clave === "potito") {
+        document.getElementById("modo-real").classList.remove("hidden");
       } else {
-        alert("Palabra incorrecta. Solo mi dueño sabe cómo entrar aquí.");
+        alert("Palabra clave incorrecta, mi amor.");
       }
-    }
-
-    function activarSecretoReal() {
-      const clave = prompt("Introduce la palabra mágica para acceder:");
-      if (clave !== null && clave.toLowerCase() === "potito") {
-        document.getElementById('secreto-anime').style.display = 'none';
-        document.getElementById('secreto-real').style.display = 'flex';
-        document.getElementById('secreto-travieso').style.display = 'none';
-        cambiarImagenReal(0);
-      } else {
-        alert("Palabra incorrecta. Solo mi dueño sabe cómo entrar aquí.");
-      }
-    }
-
-    function activarTravieso() {
-      document.getElementById('secreto-travieso').style.display = 'flex';
-      document.getElementById('mi-fanny').style.display = 'none';
-      document.getElementById('secreto-anime').style.display = 'none';
-      document.getElementById('secreto-real').style.display = 'none';
-      cambiarTraviesa(0);
-    }
-
-    function cambiarImagenAnime(direccion) {
-      indiceAnime += direccion;
-      if (indiceAnime < 0) indiceAnime = imagenesAnime.length - 1;
-      if (indiceAnime >= imagenesAnime.length) indiceAnime = 0;
-      document.getElementById('imagen-anime').src = imagenesAnime[indiceAnime];
-      document.getElementById('frase-anime').textContent = frasesAnime[indiceAnime];
-    }
-
-    function cambiarImagenReal(direccion) {
-      indiceReal += direccion;
-      if (indiceReal < 0) indiceReal = imagenesReal.length - 1;
-      if (indiceReal >= imagenesReal.length) indiceReal = 0;
-      document.getElementById('imagen-real').src = imagenesReal[indiceReal];
-      document.getElementById('frase-real').textContent = frasesReal[indiceReal];
-    }
-
-    function cambiarTraviesa(direccion) {
-      indiceTrav += direccion;
-      if (indiceTrav < 0) indiceTrav = imagenesTrav.length - 1;
-      if (indiceTrav >= imagenesTrav.length) indiceTrav = 0;
-      document.getElementById('imagen-traviesa').src = imagenesTrav[indiceTrav];
-      document.getElementById('frase-traviesa').textContent = frasesTrav[indiceTrav];
     }
   </script>
 </body>
