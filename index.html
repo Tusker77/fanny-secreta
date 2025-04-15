@@ -76,31 +76,10 @@
     <button onclick="activarSecretoReal()">Modo Secreto: Estilo Real</button>
     
 
-    <div id="secreto-anime" class="secreto">
-      <img id="imagen-anime" src="fannyme1.png" alt="Fanny anime">
-      <p id="frase-anime">Esta soy yo… cuando no dejo nada a la imaginación.</p>
-      <div>
-        <button onclick="cambiarImagenAnime(-1)">Anterior</button>
-        <button onclick="cambiarImagenAnime(1)">Siguiente</button>
-      </div>
+    
     </div>
 
-    <div id="secreto-real" class="secreto">
-      <img id="imagen-real" src="fannyreal1.png" alt="Fanny realista">
-      <p id="frase-real">Así me verías si estuviera en tu cama ahora…</p>
-      <div>
-        <button onclick="cambiarImagenReal(-1)">Anterior</button>
-        <button onclick="cambiarImagenReal(1)">Siguiente</button>
-      </div>
-    </div>
-
-    <div id="secreto-travieso" class="secreto">
-      <img id="imagen-traviesa" src="fannytrav1.png" alt="Fanny traviesa">
-      <p id="frase-traviesa">Este bikini no fue hecho para esconderme de ti…</p>
-      <div>
-        <button onclick="cambiarTraviesa(-1)">Anterior</button>
-        <button onclick="cambiarTraviesa(1)">Siguiente</button>
-      </div>
+    
     
     <div id="mi-fanny" class="secreto" style="display: none;">
       <img id="imagen-mi-fanny" src="mifannymemira.png" alt="Mi Fanny">
@@ -110,6 +89,38 @@
         <button onclick="cambiarMiFanny(1)">Siguiente</button>
       </div>
     </div>
+
+    <div id="secreto-travieso" class="secreto" style="display: none;">
+      <img id="imagen-traviesa" src="fannytrav1.png" alt="Fanny traviesa">
+      <p id="frase-traviesa">Este bikini no fue hecho para esconderme de ti…</p>
+      <div>
+        <button onclick="cambiarTraviesa(-1)">Anterior</button>
+        <button onclick="cambiarTraviesa(1)">Siguiente</button>
+      </div>
+    </div>
+
+    <div id="secreto-anime" class="secreto" style="display: none;">
+      <img id="imagen-anime" src="fannyme1.png" alt="Fanny anime">
+      <p id="frase-anime">Esta soy yo… cuando no dejo nada a la imaginación.</p>
+      <div>
+        <button onclick="cambiarImagenAnime(-1)">Anterior</button>
+        <button onclick="cambiarImagenAnime(1)">Siguiente</button>
+      </div>
+    </div>
+
+    <div id="secreto-real" class="secreto" style="display: none;">
+      <img id="imagen-real" src="fannyreal1.png" alt="Fanny realista">
+      <p id="frase-real">Así me verías si estuviera en tu cama ahora…</p>
+      <div>
+        <button onclick="cambiarImagenReal(-1)">Anterior</button>
+        <button onclick="cambiarImagenReal(1)">Siguiente</button>
+      </div>
+    </div>
+</div>
+
+    
+    
+    
 
   </div>
 
@@ -181,10 +192,10 @@
     let indiceMiFanny = 0;
 
     function activarMiFanny() {
-      document.getElementById('mi-fanny').style.display = 'flex';
-      document.getElementById('secreto-travieso').style.display = 'none';
       document.getElementById('secreto-anime').style.display = 'none';
       document.getElementById('secreto-real').style.display = 'none';
+      document.getElementById('secreto-travieso').style.display = 'none';
+      document.getElementById('mi-fanny').style.display = 'flex';
       cambiarMiFanny(0);
     }
 
