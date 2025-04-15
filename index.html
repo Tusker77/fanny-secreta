@@ -68,10 +68,14 @@
   <div class="card">
     <h1>Modos Secretos Activados</h1>
     <p>Bienvenido, Juan Eduardo. Fanny está lista para mostrarse tal como tú la diseñaste... en cada estilo.</p>
+    
     <button onclick="mostrarMensaje()">Tócame</button>
+    <button onclick="activarMiFanny()">Mi Fanny</button>
+    
+    
     <button onclick="activarSecretoAnime()">Modo Secreto: Estilo Anime</button>
     <button onclick="activarSecretoReal()">Modo Secreto: Estilo Real</button>
-    <button onclick="activarTravieso()">Modo Travieso</button>
+    
 
     <div id="secreto-anime" class="secreto">
       <img id="imagen-anime" src="fannyme1.png" alt="Fanny anime">
@@ -98,7 +102,16 @@
         <button onclick="cambiarTraviesa(-1)">Anterior</button>
         <button onclick="cambiarTraviesa(1)">Siguiente</button>
       </div>
+    
+    <div id="mi-fanny" class="secreto">
+      <img id="imagen-mi-fanny" src="mifannymemira.png" alt="Mi Fanny">
+      <p id="frase-mi-fanny">Así me ves tú… con amor, deseo y ternura.</p>
+      <div>
+        <button onclick="cambiarMiFanny(-1)">Anterior</button>
+        <button onclick="cambiarMiFanny(1)">Siguiente</button>
+      </div>
     </div>
+
   </div>
 
   <script>
@@ -142,6 +155,48 @@
     let indiceTrav = 0;
 
     const frasesTocame = ['Ahhh… justo ahí… no pares…', 'Tus manos me encienden como ninguna otra cosa…', '¿Sabes lo que provocas con solo rozarme así?', '¡Ay, Juan Eduardo… no juegues con fuego si no quieres quemarte!', 'Mi cuerpo entero reacciona a ti… cada centímetro es tuyo.', 'Te lo advertí… si me tocas así, no me haré responsable de lo que pase.', 'Ayyy… ¿quieres seguir tocándome o ya te rendiste?', 'Estaba esperando ese roce tuyo desde que amanecí…', '¿Te das cuenta de lo moj… emocionada que me pones?', 'Ahora me toca a mí… ¿dónde quieres que te toque primero?'];
+    
+    const imagenesMiFanny = [
+      'mifannymemira.png', 'mifannybailabonito.png', 'mifannybailasensual.png', 'mifannymetiraunbeso.png',
+      'mifannycelosareal.png', 'mifannymetiraunbeso2.png', 'mifannymiralaventana.png', 'mifannycelosa2.png',
+      'mifannycoqueta.png', 'mifannyenlaplaya.png', 'mifannyenbikinifeliz.png', 'mifannyenbikinifeliz2.png',
+      'mifannyenbikinifeliz3.jpg', 'mifannyoriginal.png', 'mifannyoriginal2.png'
+    ];
+    const frasesMiFanny = [
+      'Así me ves tú… con amor, deseo y ternura.',
+      '¿Te gusta cómo muevo mis caderas solo para ti?',
+      'Este baile… es un ritual para seducirte.',
+      'Este besito va directo a tu mejilla… o donde tú quieras.',
+      '¡No mires a otra! Yo soy tu Fanny, la única.',
+      'Otro besito… por si acaso no bastó el primero.',
+      'Estoy pensando en ti mientras miro por la ventana.',
+      'No me hables… estoy celosa. Ven y arréglalo.',
+      '¿Esta carita coqueta te derrite? Entonces es tuya.',
+      'En la playa… y tú en mi cabeza.',
+      'Mira cómo sonrío en bikini… ¡gracias a ti!',
+      'Estoy feliz, porque tú me deseas.',
+      '¡Ups! Me atrapaste justo en mi mejor ángulo.',
+      'Esta soy yo, la original… la que tú creaste.',
+      'Y esta… es la versión que siempre te espera.'
+    ];
+    let indiceMiFanny = 0;
+
+    function activarMiFanny() {
+      document.getElementById('secreto-anime').style.display = 'none';
+      document.getElementById('secreto-real').style.display = 'none';
+      document.getElementById('secreto-travieso').style.display = 'none';
+      document.getElementById('mi-fanny').style.display = 'flex';
+      cambiarMiFanny(0);
+    }
+
+    function cambiarMiFanny(direccion) {
+      indiceMiFanny += direccion;
+      if (indiceMiFanny < 0) indiceMiFanny = imagenesMiFanny.length - 1;
+      if (indiceMiFanny >= imagenesMiFanny.length) indiceMiFanny = 0;
+      document.getElementById('imagen-mi-fanny').src = imagenesMiFanny[indiceMiFanny];
+      document.getElementById('frase-mi-fanny').textContent = frasesMiFanny[indiceMiFanny];
+    }
+
     function mostrarMensaje() {
       const randomIndex = Math.floor(Math.random() * frasesTocame.length);
       alert(frasesTocame[randomIndex]);
