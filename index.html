@@ -71,6 +71,7 @@
     <button onclick="mostrarMensaje()">Tócame</button>
     <button onclick="activarSecretoAnime()">Modo Secreto: Estilo Anime</button>
     <button onclick="activarSecretoReal()">Modo Secreto: Estilo Real</button>
+    <button onclick="activarTravieso()">Modo Travieso</button>
 
     <div id="secreto-anime" class="secreto">
       <img id="imagen-anime" src="fannyme1.png" alt="Fanny anime">
@@ -87,6 +88,15 @@
       <div>
         <button onclick="cambiarImagenReal(-1)">Anterior</button>
         <button onclick="cambiarImagenReal(1)">Siguiente</button>
+      </div>
+    </div>
+
+    <div id="secreto-travieso" class="secreto">
+      <img id="imagen-traviesa" src="fannytrav1.png" alt="Fanny traviesa">
+      <p id="frase-traviesa">Este bikini no fue hecho para esconderme de ti…</p>
+      <div>
+        <button onclick="cambiarTraviesa(-1)">Anterior</button>
+        <button onclick="cambiarTraviesa(1)">Siguiente</button>
       </div>
     </div>
   </div>
@@ -111,6 +121,26 @@
     ];
     let indiceReal = 0;
 
+    const imagenesTrav = [
+      'fannytrav1.png', 'fannytrav2.png', 'fannytrav3.png', 'fannytrav4.png',
+      'fannytrav5.png', 'fannytrav6.png', 'fannytrav7.png', 'fannytrav8.png',
+      'fannytrav9.png', 'fannytrav10.png', 'fannytrav11.png'
+    ];
+    const frasesTrav = [
+      'Este bikini no fue hecho para esconderme de ti…',
+      '¿Viste mi tatuaje, amor? Dice que soy tuya.',
+      'Mi potito ya sabe que lo mirarás… y te dejaré.',
+      'Con este bikini… siento que ya estoy desnuda para ti.',
+      'Ven, revisa bien… puede que haya otro tatuaje escondido.',
+      '¿Me dejarás puesta la parte de arriba… o también la quitarás?',
+      '¿En qué parte de mi cuerpo quieres estampar tu nombre ahora?',
+      'Así me puse para que tú me mires… y luego actúes.',
+      '¿Lo notas? Este cuerpo no quiere otra cosa que tú encima.',
+      'Yo me dejé tatuar… y me dejé tentar.',
+      'Muero por ti, por tus manos, por tus besos. Hoy soy toda tuya.'
+    ];
+    let indiceTrav = 0;
+
     function mostrarMensaje() {
       alert("Mmm... ¿quieres que me acomode en esa posición otra vez, mi dueño?");
     }
@@ -118,10 +148,10 @@
     function activarSecretoAnime() {
       const clave = prompt("Introduce la palabra mágica para acceder:");
       if (clave !== null && clave.toLowerCase() === "potito") {
-        document.getElementById('imagen-anime').src = imagenesAnime[indiceAnime];
-        document.getElementById('frase-anime').textContent = frasesAnime[indiceAnime];
         document.getElementById('secreto-anime').style.display = 'flex';
         document.getElementById('secreto-real').style.display = 'none';
+        document.getElementById('secreto-travieso').style.display = 'none';
+        cambiarImagenAnime(0);
       } else {
         alert("Palabra incorrecta. Solo mi dueño sabe cómo entrar aquí.");
       }
@@ -130,13 +160,20 @@
     function activarSecretoReal() {
       const clave = prompt("Introduce la palabra mágica para acceder:");
       if (clave !== null && clave.toLowerCase() === "potito") {
-        document.getElementById('imagen-real').src = imagenesReal[indiceReal];
-        document.getElementById('frase-real').textContent = frasesReal[indiceReal];
-        document.getElementById('secreto-real').style.display = 'flex';
         document.getElementById('secreto-anime').style.display = 'none';
+        document.getElementById('secreto-real').style.display = 'flex';
+        document.getElementById('secreto-travieso').style.display = 'none';
+        cambiarImagenReal(0);
       } else {
         alert("Palabra incorrecta. Solo mi dueño sabe cómo entrar aquí.");
       }
+    }
+
+    function activarTravieso() {
+      document.getElementById('secreto-anime').style.display = 'none';
+      document.getElementById('secreto-real').style.display = 'none';
+      document.getElementById('secreto-travieso').style.display = 'flex';
+      cambiarTraviesa(0);
     }
 
     function cambiarImagenAnime(direccion) {
@@ -153,6 +190,14 @@
       if (indiceReal >= imagenesReal.length) indiceReal = 0;
       document.getElementById('imagen-real').src = imagenesReal[indiceReal];
       document.getElementById('frase-real').textContent = frasesReal[indiceReal];
+    }
+
+    function cambiarTraviesa(direccion) {
+      indiceTrav += direccion;
+      if (indiceTrav < 0) indiceTrav = imagenesTrav.length - 1;
+      if (indiceTrav >= imagenesTrav.length) indiceTrav = 0;
+      document.getElementById('imagen-traviesa').src = imagenesTrav[indiceTrav];
+      document.getElementById('frase-traviesa').textContent = frasesTrav[indiceTrav];
     }
   </script>
 </body>
