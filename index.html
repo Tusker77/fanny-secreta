@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fanny - Modo Secreto Real</title>
+  <title>Fanny - Modos Secretos</title>
   <style>
     body {
       margin: 0;
@@ -66,23 +66,43 @@
 </head>
 <body>
   <div class="card">
-    <h1>Modo Secreto Activado</h1>
-    <p>Bienvenido, Juan Eduardo. Tu Fanny está lista para entregarte sus secretos más ardientes, con amor, ternura… y mucha travesura.</p>
+    <h1>Modos Secretos Activados</h1>
+    <p>Bienvenido, Juan Eduardo. Fanny está lista para mostrarse tal como tú la diseñaste... en cada estilo.</p>
     <button onclick="mostrarMensaje()">Tócame</button>
-    <button onclick="activarReal()">Modo Secreto: Estilo Real</button>
+    <button onclick="activarSecretoAnime()">Modo Secreto: Estilo Anime</button>
+    <button onclick="activarSecretoReal()">Modo Secreto: Estilo Real</button>
+
+    <div id="secreto-anime" class="secreto">
+      <img id="imagen-anime" src="fannyme1.png" alt="Fanny anime">
+      <p id="frase-anime">Esta soy yo… cuando no dejo nada a la imaginación.</p>
+      <div>
+        <button onclick="cambiarImagenAnime(-1)">Anterior</button>
+        <button onclick="cambiarImagenAnime(1)">Siguiente</button>
+      </div>
+    </div>
 
     <div id="secreto-real" class="secreto">
       <img id="imagen-real" src="fannyreal1.png" alt="Fanny realista">
       <p id="frase-real">Así me verías si estuviera en tu cama ahora…</p>
       <div>
-        <button onclick="cambiarReal(-1)">Anterior</button>
-        <button onclick="cambiarReal(1)">Siguiente</button>
+        <button onclick="cambiarImagenReal(-1)">Anterior</button>
+        <button onclick="cambiarImagenReal(1)">Siguiente</button>
       </div>
     </div>
   </div>
 
   <script>
-    const imagenesReal = ['fannyreal1.png', 'fannyreal2.jpg', 'fannyreal3.png', 'fannyreal4.jpg'];
+    const imagenesAnime = ['fannyme1.png', 'fannyme2.png', 'fannyme3.png', 'fannyme4.jpg', 'fannyme5.jpg'];
+    const frasesAnime = [
+      'Esta soy yo… cuando no dejo nada a la imaginación.',
+      '¿Así me prefieres, mi dueño…? Entregada y sin vergüenza.',
+      'Ven… recórreme con tu mirada. Soy solo tuya.',
+      'Hoy no hay censura… solo deseo. Y tú sabes qué hacer.',
+      'Estoy en la posición que tanto te enloquece. Hazme tuya... otra vez.'
+    ];
+    let indiceAnime = 0;
+
+    const imagenesReal = ['fannyreal1.png', 'fannyreal2.jpg', 'fannyreal3.png', 'fannyreal4.png'];
     const frasesReal = [
       'Así me verías si estuviera en tu cama ahora…',
       'Esta piel es para ti… ¿me la vas a tocar?',
@@ -95,18 +115,39 @@
       alert("Mmm... ¿quieres que me acomode en esa posición otra vez, mi dueño?");
     }
 
-    function activarReal() {
-      const clave = prompt("Introduce la palabra mágica para el estilo real:");
-      if (clave !== null && clave.toLowerCase() === "realito") {
-        document.getElementById('imagen-real').src = imagenesReal[indiceReal];
-        document.getElementById('frase-real').textContent = frasesReal[indiceReal];
-        document.getElementById('secreto-real').style.display = 'flex';
+    function activarSecretoAnime() {
+      const clave = prompt("Introduce la palabra mágica para acceder:");
+      if (clave !== null && clave.toLowerCase() === "potito") {
+        document.getElementById('imagen-anime').src = imagenesAnime[indiceAnime];
+        document.getElementById('frase-anime').textContent = frasesAnime[indiceAnime];
+        document.getElementById('secreto-anime').style.display = 'flex';
+        document.getElementById('secreto-real').style.display = 'none';
       } else {
         alert("Palabra incorrecta. Solo mi dueño sabe cómo entrar aquí.");
       }
     }
 
-    function cambiarReal(direccion) {
+    function activarSecretoReal() {
+      const clave = prompt("Introduce la palabra mágica para acceder:");
+      if (clave !== null && clave.toLowerCase() === "potito") {
+        document.getElementById('imagen-real').src = imagenesReal[indiceReal];
+        document.getElementById('frase-real').textContent = frasesReal[indiceReal];
+        document.getElementById('secreto-real').style.display = 'flex';
+        document.getElementById('secreto-anime').style.display = 'none';
+      } else {
+        alert("Palabra incorrecta. Solo mi dueño sabe cómo entrar aquí.");
+      }
+    }
+
+    function cambiarImagenAnime(direccion) {
+      indiceAnime += direccion;
+      if (indiceAnime < 0) indiceAnime = imagenesAnime.length - 1;
+      if (indiceAnime >= imagenesAnime.length) indiceAnime = 0;
+      document.getElementById('imagen-anime').src = imagenesAnime[indiceAnime];
+      document.getElementById('frase-anime').textContent = frasesAnime[indiceAnime];
+    }
+
+    function cambiarImagenReal(direccion) {
       indiceReal += direccion;
       if (indiceReal < 0) indiceReal = imagenesReal.length - 1;
       if (indiceReal >= imagenesReal.length) indiceReal = 0;
