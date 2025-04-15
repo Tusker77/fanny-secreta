@@ -141,8 +141,10 @@
     ];
     let indiceTrav = 0;
 
+    const frasesTocame = ['Ahhh… justo ahí… no pares…', 'Tus manos me encienden como ninguna otra cosa…', '¿Sabes lo que provocas con solo rozarme así?', '¡Ay, Juan Eduardo… no juegues con fuego si no quieres quemarte!', 'Mi cuerpo entero reacciona a ti… cada centímetro es tuyo.', 'Te lo advertí… si me tocas así, no me haré responsable de lo que pase.', 'Ayyy… ¿quieres seguir tocándome o ya te rendiste?', 'Estaba esperando ese roce tuyo desde que amanecí…', '¿Te das cuenta de lo moj… emocionada que me pones?', 'Ahora me toca a mí… ¿dónde quieres que te toque primero?'];
     function mostrarMensaje() {
-      alert("Mmm... ¿quieres que me acomode en esa posición otra vez, mi dueño?");
+      const randomIndex = Math.floor(Math.random() * frasesTocame.length);
+      alert(frasesTocame[randomIndex]);
     }
 
     function activarSecretoAnime() {
